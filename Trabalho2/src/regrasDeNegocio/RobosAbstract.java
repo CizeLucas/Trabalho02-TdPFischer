@@ -14,7 +14,7 @@ public abstract class RobosAbstract implements RobosInterface{
 	public RobosAbstract(String nome, Plano plano) {
 		this.nome = nome;
 		this.plano = plano;
-		coordRobo = new int[2];
+		coordRobo = new int[2];	 coordRobo[0]=0; coordRobo[1]=0;
 		pontuacao = 0;
 		qtdAlunosColetados=0;
 		qtdBugsColetados=0;
@@ -29,14 +29,15 @@ public abstract class RobosAbstract implements RobosInterface{
 	
 	
 	protected int[] movimentarRobo(int coordInicial[], int coordFinal[]) {
-		
-		if(coordInicial[0] == coordFinal[0] && coordInicial[1] == coordFinal[1]) { 
-			return coordInicial;
-		} else {
-			plano.moverRobo(coordInicial, coordFinal, this);
-			this.checarAlunoOuBugNaCelula(coordFinal);
-			return coordFinal;
-		}
+
+			if(coordInicial[0] == coordFinal[0] && coordInicial[1] == coordFinal[1]) { 
+				return coordInicial;
+			} else {
+				plano.moverRobo(coordInicial, coordFinal, this);
+				this.checarAlunoOuBugNaCelula(coordFinal);
+				return coordFinal;
+			}
+				
 		//O if acima checa se houve mudanca nas coordenadas do robo (se houve movimento)
 		// Caso haja movimento, o robo eh movido no plano, sua pontuacao eh aferida e retorna sua coordenada atual
 		// Caso NAO haja movimento, apenas a coordenada incial eh retornada
@@ -44,7 +45,7 @@ public abstract class RobosAbstract implements RobosInterface{
 	
 
 	protected void finalizarMovimentacao() {
-		plano.roboVisitouCelula(coordRobo);
+			plano.roboVisitouCelula(coordRobo);
 	}
 	
 	protected void setCorNoPlano(Color corNoPlano) {

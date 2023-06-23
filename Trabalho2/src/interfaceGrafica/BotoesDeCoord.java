@@ -69,6 +69,9 @@ public class BotoesDeCoord extends PaineisJPanel {
 			String nomeBotao;
 			
 			b.setBackground(Color.BLACK);
+			//012345
+			//[x, y]
+
 			nomeBotao = b.getName();
 			coord[0] = (nomeBotao.charAt(1)-48);
 			coord[1] = (nomeBotao.charAt(4)-48);

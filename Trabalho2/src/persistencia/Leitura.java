@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Leitura {
+	
 	private BufferedReader leitor;
 	private String diretorio;
 	
