@@ -38,6 +38,7 @@ public final class Controlador {
 	public void finalizarJogo() { 
 		//Executado quando o jogador finaliza o jogo no botao "Sair do Jogo"
 		this.gravarDadosNoArquivo();
+		System.exit(0);
 	}
 	
 	public void verificarRodada() { 
@@ -55,14 +56,21 @@ public final class Controlador {
 	
 	public void iniciarProximaRodada() { 
 		//Executado quando o jogador inicia outra rodada no botao "Proxima Rodada"
+		
 		plano.novaRodada();
 		
 		if(plano.checarSeJogoAcabou()) {
+			
 			this.gravarDadosNoArquivo();
 			intGraf.mostrarMsgFimDeJogo();
+			intGraf.dispose();
 			this.instanciarJanelaDeRelatorio();
+			
 		} else {
+			
+			intGraf.dispose();
 			this.instanciarJanelaDeJogo();
+			
 		}
 		
 	}

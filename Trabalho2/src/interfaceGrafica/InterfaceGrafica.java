@@ -59,7 +59,6 @@ public class InterfaceGrafica extends JFrame {
 	
 	protected void sairDoJogo() { //Executada ao pressionar o botao SAIR DO JOGO
 		controlador.finalizarJogo();
-		System.exit(0);
 	}
 	
 	protected void verificar() { //Executada ao pressionar o botao VERIFICAR
@@ -68,7 +67,15 @@ public class InterfaceGrafica extends JFrame {
 	
 	protected void proximaRodada() { //Executada ao pressionar o botao PROXIMA RODADA
 		controlador.iniciarProximaRodada();
-		this.dispose();
+	}
+	
+	
+	protected void painelMessageDialog(Component parentComponent, String msg) {
+		JOptionPane.showMessageDialog(parentComponent, msg, "Aviso do Jogo", 1);
+	}
+	
+	public void mostrarMsgFimDeJogo() {
+		this.painelMessageDialog(this, "Parabens! A Partida Acabou!\nVoce resgatou todos os alunos da Ilha De Java.");
 	}
 	
 	
@@ -97,14 +104,6 @@ public class InterfaceGrafica extends JFrame {
 		return new Font("SansSerif", tipoDeLetra, tamanhoFonte);
 	}
 	
-	
-	protected void painelMessageDialog(Component parentComponent, String msg) {
-		JOptionPane.showMessageDialog(parentComponent, msg, "Aviso do Jogo", 1);
-	}
-	
-	public void mostrarMsgFimDeJogo() {
-		this.painelMessageDialog(this, "Parabens! A Partida Acabou!\nVoce resgatou todos os alunos da Ilha De Java.");
-	}
 	
 	protected void setRoboTemp(RobosAbstract roboTemp) {
 		this.roboTemp = roboTemp;
