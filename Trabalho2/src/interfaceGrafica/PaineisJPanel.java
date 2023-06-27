@@ -2,6 +2,7 @@ package interfaceGrafica;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.Icon;
@@ -15,6 +16,13 @@ public abstract class PaineisJPanel extends JPanel{
 	
 	//Esse metodo armazena todas os metodos para criacao dos JPanels
 	
+	private InterfaceGrafica ig;
+	
+	public PaineisJPanel(InterfaceGrafica ig) {
+		this.ig = ig;
+	} // >> FIM CONSTRUTOR <<
+	
+	
 	protected JPanel criarJPanel() {
 		return new JPanel();
 	}
@@ -23,14 +31,6 @@ public abstract class PaineisJPanel extends JPanel{
 		JPanel p = new JPanel();
 		p.setBackground(c);
 		return p;
-	}
-	
-	protected JButton criarJButton(Color c, String msg, Dimension dimension) {
-		JButton b = new JButton(msg);
-		b.setName(msg);
-		b.setPreferredSize(dimension);
-		b.setBackground(c);
-		return b;
 	}
 	
 	protected ImageIcon criarImageIcon(String diretorio, int tamanhoX, int tamanhoY) {
@@ -49,6 +49,7 @@ public abstract class PaineisJPanel extends JPanel{
 	protected JLabel criarJLabel(String str, Color corForeground) {
 		JLabel jl = new JLabel(str);
 		jl.setForeground(corForeground);
+		jl.setFont(ig.getFontePadrao(14, Font.PLAIN));
 		return jl;
 	}
 	
@@ -56,6 +57,7 @@ public abstract class PaineisJPanel extends JPanel{
 		JButton b = new JButton(msg);
 		b.setName(msg);
 		b.setBackground(c);
+		b.setFont(ig.getFontePadrao(14, Font.BOLD));
 		return b;
 	}
 	
@@ -63,14 +65,24 @@ public abstract class PaineisJPanel extends JPanel{
 		JButton b = new JButton(msg, img);
 		b.setName(msg);
 		b.setBackground(c);
+		b.setFont(ig.getFontePadrao(14, Font.BOLD));
 		return b;
 	}
 	
 	protected JButton criarJButton(String msg) {
 		JButton b = new JButton(msg);
 		b.setName(msg);
+		b.setFont(ig.getFontePadrao(14, Font.BOLD));
 		return b;
 	}
 	
+	protected JButton criarJButton(Color c, String msg, Dimension dimension) {
+		JButton b = new JButton(msg);
+		b.setName(msg);
+		b.setPreferredSize(dimension);
+		b.setBackground(c);
+		b.setFont(ig.getFontePadrao(14, Font.BOLD));
+		return b;
+	}
 	
 }

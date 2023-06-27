@@ -11,14 +11,14 @@ public abstract class RobosAbstract implements RobosInterface{
 	private int qtdBugsColetados;
 	private Color corNoPlano;
 	
-	public RobosAbstract(String nome, Plano plano) {
+	public RobosAbstract(String nome, Plano plano, int corR, int corG, int corB) {
 		this.nome = nome;
 		this.plano = plano;
 		coordRobo = new int[2];	 coordRobo[0]=0; coordRobo[1]=0;
 		pontuacao = 0;
 		qtdAlunosColetados=0;
 		qtdBugsColetados=0;
-		
+		corNoPlano = new Color(corR, corG, corB);
 	} //fim construtor
 	
 	
@@ -86,7 +86,7 @@ public abstract class RobosAbstract implements RobosInterface{
 		return pontuacao;
 	}
 	
-	protected String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	
@@ -101,6 +101,5 @@ public abstract class RobosAbstract implements RobosInterface{
 	public Color getCorNoPlano() {
 		return corNoPlano;
 	}
-
 	
 }

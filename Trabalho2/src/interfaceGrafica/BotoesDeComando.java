@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,7 +19,6 @@ import regrasDeNegocio.*;
 public class BotoesDeComando extends PaineisJPanel{
 	
 	private InterfaceGrafica ig;
-	//private Plano plano;
 	private ArrayList<RobosAbstract> arrayDeRobos;
 	private JPanel painelBotoesDosRobos;
 	private JPanel painelBotoesDeControle;
@@ -30,9 +28,8 @@ public class BotoesDeComando extends PaineisJPanel{
 	private Color corPadrao;
 	
 	public BotoesDeComando(InterfaceGrafica ig, Plano plano, ArrayList<RobosAbstract> arrayDeRobos) {
-		
+		super(ig);
 		this.ig = ig;
-		//this.plano = plano;
 		this.arrayDeRobos = arrayDeRobos;
 		
 		corPadrao = new Color(204, 204, 204); //Cor Cinza
@@ -50,20 +47,17 @@ public class BotoesDeComando extends PaineisJPanel{
 		painelBotoesDosRobos.setPreferredSize(new Dimension(300, 120));
 		painelBotoesDosRobos.setLayout(new BoxLayout(painelBotoesDosRobos, BoxLayout.PAGE_AXIS));
 		
-		botao = this.criarBotaoDoRobo(
-				painelBotoesDosRobos, "1) Robo Andador", arrayDeRobos.get(0).getCorNoPlano(), new botaoDosRobos());
-		painelBotoesDosRobos.add(botao);
-		botoesDeRobos.add(botao);
+		int contador=0;
+		for (RobosAbstract robo : arrayDeRobos) {
+			
+			botao = criarBotaoDoRobo(
+					painelBotoesDosRobos, robo.getNome(), robo.getCorNoPlano(), new botaoDosRobos(contador));
+			
+			painelBotoesDosRobos.add(botao);
+			botoesDeRobos.add(botao);
+			contador++;
+		}
 		
-		botao = this.criarBotaoDoRobo(
-				painelBotoesDosRobos, "2) Robo Rei", arrayDeRobos.get(1).getCorNoPlano(), new botaoDosRobos());
-		painelBotoesDosRobos.add(botao);
-		botoesDeRobos.add(botao);
-		
-		botao = this.criarBotaoDoRobo(
-				painelBotoesDosRobos, "3) Robo Rainha", arrayDeRobos.get(2).getCorNoPlano(), new botaoDosRobos());
-		painelBotoesDosRobos.add(botao);
-		botoesDeRobos.add(botao);
 		/* -------------------------------------------------------------------------- */
 		
 		
@@ -104,7 +98,6 @@ public class BotoesDeComando extends PaineisJPanel{
 		botao.setForeground(Color.WHITE);
 		botao.setPreferredSize(new Dimension(150,45));
 		botao.setAlignmentX(CENTER_ALIGNMENT);
-		//botoesDeRobos.add(botao);
 		return botao;
 	}
 	
@@ -156,15 +149,16 @@ public class BotoesDeComando extends PaineisJPanel{
 	}
 	
 	private class botaoDosRobos implements ActionListener {
+		int numeroRobo;
+		public botaoDosRobos(int numeroRobo) {
+			this.numeroRobo = numeroRobo;
+		}
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
 				b.setBackground(b.getBackground().darker());
 				b.setEnabled(false);
-				ig.setRoboTemp(selecionarRobo((b.getName().charAt(0)-48)-1));
-				//o comando acima le o primeiro char do nome do botao "*1*) Robo XXXX" 
-				//		e converte para um numero e seleciona o robo no arraylist.
+				ig.setRoboTemp(selecionarRobo(numeroRobo));
 				ig.setVisibilidadeBotoesCoord(true);
-
 		}
 	}//FIM CLASSE PRIVADA botaoDosRobos
 	

@@ -28,9 +28,9 @@ public final class Controlador {
 		plano = new Plano(tamanhoTabuleiro, qtdDeAlunos, qtdDeBugs);
 		
 		arrayDeRobos = new ArrayList<RobosAbstract>();
-		arrayDeRobos.add(new RoboAndador("Robo Andador", 'A', plano));
-		arrayDeRobos.add(new RoboRei("Robo Rei", 'R', plano));
-		arrayDeRobos.add(new RoboRainha("Robo Rainha", 'r', plano));
+		arrayDeRobos.add(new RoboAndador("Robo Andador", plano, 0, 255, 0));
+		arrayDeRobos.add(new RoboRei("Robo Rei", plano, 0, 0, 255));
+		arrayDeRobos.add(new RoboRainha("Robo Rainha", plano, 255, 0, 0));
 		
 		this.instanciarJanelaDeJogo();
 	}// >>>  FIM CONSTRUTOR  <<<

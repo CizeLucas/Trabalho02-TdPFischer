@@ -24,6 +24,7 @@ public class BotoesDeCoord extends PaineisJPanel {
 	//private ArrayList<JButton> botoesDeCoordenada;
 	
 	public BotoesDeCoord(InterfaceGrafica ig, int tamanho, ArrayList<Celulas> arrayDeCelulas) {
+		super(ig);
 		this.ig = ig;
 		this.tamanho = tamanho;
 		//this.arrayDeCelulas = arrayDeCelulas;
@@ -49,12 +50,12 @@ public class BotoesDeCoord extends PaineisJPanel {
 				}
 				botao.setBackground(corBotao);
 				
-				//Confere se tem robo na celula referente a este botao e desativa o respectivo botao
+			//Confere se tem robo na celula referente a este botao e desativa o respectivo botao
 				if(arrayDeCelulas.get(((y*tamanho)+x)).temRobo()) {
 					botao.setEnabled(false);
 				}
 				
-				botao.addActionListener(new botaoDasCoordenadas());
+				botao.addActionListener(new botaoDasCoordenadas(x,y));
 				this.add(botao);
 				contador++;
 			}
@@ -64,17 +65,16 @@ public class BotoesDeCoord extends PaineisJPanel {
 	
 	
 	private class botaoDasCoordenadas implements ActionListener {
+		private int coord[];
+		public botaoDasCoordenadas(int x, int y) {
+			coord = new int[2];
+			coord[0] = x;
+			coord[1] = y;
+		}
+		
 		public void actionPerformed(ActionEvent e) {
 			JButton b = (JButton) e.getSource();
-			String nomeBotao;
-			
 			b.setBackground(Color.BLACK);
-			//012345
-			//[x, y]
-
-			nomeBotao = b.getName();
-			coord[0] = (nomeBotao.charAt(1)-48);
-			coord[1] = (nomeBotao.charAt(4)-48);
 			b.setEnabled(false);
 			ig.retornarCoordAoRobo(coord);
 		}

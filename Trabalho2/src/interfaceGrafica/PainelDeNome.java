@@ -23,6 +23,7 @@ public class PainelDeNome extends PaineisJPanel{
 	private JButton botaoRelatorioDoJogo;
 	
 	public PainelDeNome(InterfaceGrafica ig, Plano plano) {
+		super(ig);
 		this.ig = ig;
 		this.plano = plano;
 		
@@ -34,17 +35,17 @@ public class PainelDeNome extends PaineisJPanel{
 		
 		inputNomeJogador.add(criarJLabel("Nome Do Jogador:", Color.BLACK));
 		
-		jtf = criarJTextField(new Dimension(200, 40));
+		jtf = criarJTextField(new Dimension(180, 40));
 		inputNomeJogador.add(jtf);
 		
-		botaoJogar = criarJButton(new Color(110, 155, 235), "Jogar", new Dimension(70, 30));
+		botaoJogar = criarJButton(new Color(110, 155, 235), "Jogar", new Dimension(80, 30));
 		botaoJogar.addActionListener(new botaoJogar());
 		inputNomeJogador.add(botaoJogar);
 		/* -------------------------------------------------------------------------- */
 		
 		JPanel painelBotaoRelatorio = criarJPanel(new Color(220, 230, 245));
 		
-		botaoRelatorioDoJogo = criarJButton(new Color(110, 155, 235), "Relatorio Do Jogo", new Dimension(200, 40));
+		botaoRelatorioDoJogo = criarJButton(new Color(110, 155, 235), "Relatorio Do Jogo", new Dimension(180, 40));
 		botaoRelatorioDoJogo.addActionListener(new botaoRelatorioDoJogo());
 		painelBotaoRelatorio.add(botaoRelatorioDoJogo);
 		/* -------------------------------------------------------------------------- */

@@ -26,6 +26,7 @@ public class PainelDeRelatorio extends PaineisJPanel{
 	
 	
 	protected PainelDeRelatorio (InterfaceGrafica ig, ArrayList<RobosAbstract> robos, Plano plano, Color corBackgroung) {
+		super(ig);
 		this.ig = ig;
 		this.robos = robos;
 		this.plano = plano;
@@ -39,10 +40,10 @@ public class PainelDeRelatorio extends PaineisJPanel{
 		JPanel painelQtdBugEAlunos = criarJPanel(cor);
 		painelQtdBugEAlunos.setPreferredSize(new Dimension(100,45));
 		painelQtdBugEAlunos.setBorder(BorderFactory.createSoftBevelBorder(1));
-		painelQtdBugEAlunos.add(criarJLabel("Quantidades de bugs e alunos capturados:", Color.WHITE));
+		painelQtdBugEAlunos.add(criarJLabel("Quantidades de bugs e alunos capturados:"));
 		
-		jlQtdAlunos = criarJLabel(plano.getQtdAlunosCapturados()+"     ",  "Aluno.png", Color.WHITE, Color.LIGHT_GRAY);
-		jlQtdBugs = criarJLabel(plano.getQtdBugsCapturados()+"     ",  "Bug.png", Color.WHITE, Color.LIGHT_GRAY);
+		jlQtdAlunos = criarJLabel(plano.getQtdAlunosCapturados()+"     ",  "Aluno.png", Color.LIGHT_GRAY);
+		jlQtdBugs = criarJLabel(plano.getQtdBugsCapturados()+"     ",  "Bug.png", Color.LIGHT_GRAY);
 		
 		painelQtdBugEAlunos.add(jlQtdAlunos);
 		painelQtdBugEAlunos.add(jlQtdBugs);
@@ -52,13 +53,13 @@ public class PainelDeRelatorio extends PaineisJPanel{
 		JPanel painelPontosDosRobos = criarJPanel(cor);
 		painelPontosDosRobos.setPreferredSize(new Dimension(100,55));
 		painelPontosDosRobos.setBorder(BorderFactory.createSoftBevelBorder(1));
-		painelPontosDosRobos.add(criarJLabel("   Pontuacoes dos Robos:   ", Color.WHITE));
+		painelPontosDosRobos.add(criarJLabel("   Pontuacoes dos Robos:   "));
 		
-		jlPontuacaoRobo1 = criarJLabel(robos.get(0).getPontuacao()+" Pontos    ",  "RoboAndador.png", Color.WHITE, Color.LIGHT_GRAY);
+		jlPontuacaoRobo1 = criarJLabel(robos.get(0).getPontuacao()+" Pontos    ",  "RoboAndador.png", Color.LIGHT_GRAY);
 		
-		jlPontuacaoRobo2 = criarJLabel(robos.get(1).getPontuacao()+" Pontos    ",  "Rei.png", Color.WHITE, Color.LIGHT_GRAY);
+		jlPontuacaoRobo2 = criarJLabel(robos.get(1).getPontuacao()+" Pontos    ",  "Rei.png", Color.LIGHT_GRAY);
 		
-		jlPontuacaoRobo3 = criarJLabel(robos.get(2).getPontuacao()+" Pontos    ",  "Rainha.png", Color.WHITE, Color.LIGHT_GRAY);
+		jlPontuacaoRobo3 = criarJLabel(robos.get(2).getPontuacao()+" Pontos    ",  "Rainha.png", Color.LIGHT_GRAY);
 		
 		painelPontosDosRobos.add(jlPontuacaoRobo1);
 		painelPontosDosRobos.add(jlPontuacaoRobo2);
@@ -71,15 +72,23 @@ public class PainelDeRelatorio extends PaineisJPanel{
 	
 	
 	//Metodo cria um JLabel com configuracoes especificas para essa classe
-	private JLabel criarJLabel(String msg, String nomeIconeArquivo, Color corForeground, Color corBackground) {
+	private JLabel criarJLabel(String msg, String nomeIconeArquivo, Color corBackground) {
 		JLabel jl = new JLabel(msg);
 		jl.setFont(ig.getFontePadrao(14, Font.PLAIN));
 		jl.setIcon(criarImageIcon(nomeIconeArquivo, 20, 20));
 		jl.setIconTextGap(7);
-		jl.setForeground(corForeground);
+		jl.setForeground(Color.WHITE);
 		jl.setBackground(corBackground);
 		return jl;
 	}
+	
+	private JLabel criarJLabel(String str) {
+		JLabel jl = new JLabel(str);
+		jl.setFont(ig.getFontePadrao(14, Font.PLAIN));
+		jl.setForeground(Color.WHITE);
+		return jl;
+	}
+	
 	
 	
 	protected void atualizarJLabelsDeRelatorio() {

@@ -1,12 +1,10 @@
 package regrasDeNegocio;
 
-import java.awt.Color;
 
 public class RoboRei extends RobosAbstract{
 
-	public RoboRei(String nome, char apelidoNoPlano, Plano plano) {
-		super(nome, plano);
-		setCorNoPlano(new Color(0, 0, 255));
+	public RoboRei(String nome, Plano plano, int corR, int corG, int corB) {
+		super(nome, plano, corR, corG,  corB);
 	}
 
 	public void movimentar(int coord[]) {
